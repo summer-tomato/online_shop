@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+.header {
+	width: 300px;
+	margin: 0px;
+	padding: 5px;
+	background-color: #EE82EE
+}
+
+.main {
+	line-height: 1.5em;
+}
+
+.titleName {
+	text-align: left;
+	font-size: xx-large;
+}
+
+.date {
+	text-align: right;
+	font-size: x-large;
+}
+
+.message {
+	font-weight: bold;
+}
+
+.itemName {
+	display: inline-block;
+	width: 90px;
+}
+
+.footer {
+	line-height: 1.5em;
+	width: 310px;
+	text-align: right;
+}
+
+
+.listFooter {
+	line-height: 1.5em;
+	width: 460px;
+	text-align: right;
+}
+
+.even {
+	background-color: #eeeeee;
+}
