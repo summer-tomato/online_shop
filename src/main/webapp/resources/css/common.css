@@ -1,14 +1,9 @@
 @charset "UTF-8";
 
 .header {
-	width: 300px;
-	margin: 0px;
-	padding: 5px;
-	background-color: #EE82EE
-}
-
-.main {
-	line-height: 1.5em;
+	padding: 20px;
+	text-align: center;
+	background-color: #CCCCFF;
 }
 
 .titleName {
@@ -16,13 +11,12 @@
 	font-size: xx-large;
 }
 
-.date {
-	text-align: right;
-	font-size: x-large;
+.doneMessage {
+	color: blue;
 }
 
-.message {
-	font-weight: bold;
+.errorMessage {
+	color: red;
 }
 
 .itemName {
@@ -30,19 +24,11 @@
 	width: 90px;
 }
 
-.footer {
-	line-height: 1.5em;
-	width: 310px;
-	text-align: right;
+
+table, td, th {
+	border: 2px #808080 solid;
 }
 
-
-.listFooter {
-	line-height: 1.5em;
-	width: 460px;
-	text-align: right;
-}
-
-.even {
-	background-color: #eeeeee;
+body {
+	white-space: nowrap;
 }
