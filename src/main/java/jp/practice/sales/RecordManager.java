@@ -1,72 +1,60 @@
-package jp.practice.address;
+package jp.practice.sales;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecordManager {
-	/** Initial value data **/
-	private static List<Employee> list = new ArrayList<>();
-	static {
-		list.add(new Employee("200101", "佐藤一郎", "0569-000-1111", "尾張県愛知市舟船町５９６"));
-		list.add(new Employee("200102", "鈴木次男", "0242-000-2222", "三河県三河市海池２７２７"));
-		list.add(new Employee("200103", "田中信三郎", "0722-000-3333", "和泉県泉市浜川５５"));
-		list.add(new Employee("200104", "高橋四郎", "0729-000-4444", "摂津府兵庫市沼地１１"));
-		list.add(new Employee("200105", "渡辺五郎", "0982-000-5555", "筑紫県筑後市泉町２"));
-		list.add(new Employee("200106", "伊藤六次", "0562-000-6666", "信濃県信州市泊町３３３"));
-		list.add(new Employee("200107", "山本七三", "086-000-7777", "土佐県四国市港町４"));
-		list.add(new Employee("200108", "中村八吉", "0489-000-8888", "薩摩県種島市潮見５５"));
-		list.add(new Employee("200109", "小林九兵", "0827-000-9999", "周防県周防市川原６６"));
-		list.add(new Employee("200110", "加藤十重", "048-000-1010", "武蔵県北むさし市河岸７７７"));
-		list.add(new Employee("200111", "ジャック", "0273-000-1111", "相模県相模市堤５"));
-		list.add(new Employee("200112", "山田十二", "075-000-1212", "駿河県南駿河市河口３５"));
-	}
+/**
+ * 商品データ全体を保持するクラス
+ */
+public final class RecordManager {
 
-	private RecordManager() {
-	}
+    /** 商品データ */
+    private static List<Item> list = new ArrayList<>();
+    static {
+        list.add(new Item("A00101", "油性ボールペン", 60, 0, 0));
+        list.add(new Item("A00201", "極細ボールペン", 120, 0, 0));
+        list.add(new Item("A00301", "蛍光ペン６色セット", 420, 0, 0));
+        list.add(new Item("A00401", "シャープペンシル", 100, 0, 0));
+        list.add(new Item("A00501", "鉛筆H（１ダース）", 400, 0, 0));
+        list.add(new Item("B00101", "無線綴ノートA4", 100, 0, 0));
+        list.add(new Item("B00201", "リングノートA4", 120, 0, 0));
+        list.add(new Item("B00301", "領収書", 350, 0, 0));
+        list.add(new Item("C00101", "はさみ（青）", 128, 0, 0));
+        list.add(new Item("C00201", "ステープラー", 338, 0, 0));
+        list.add(new Item("C00301", "２穴パンチ", 128, 0, 0));
+        list.add(new Item("C00401", "ゼムクリップ", 98, 0, 0));
+        list.add(new Item("C00501", "消しゴム", 58, 0, 0));
+    }
 
-	/**
-	 * 指定したIDのレコードを取得
-	 *
-	 * @param id 従業員番号
-	 * @return Employee
-	 */
-	public static Employee selectEmployee(String id) {
-		int index = list.indexOf(new Employee(id, "", "", ""));
-		if(index < 0) {
-			return null;
-		}
-		return list.get(index);
-	}
+    /**
+     * 引数で指定された商品名に一致する商品データを返却
+     * @param goodsName 検索キーとなる商品名
+     * @return 検索結果の商品データ
+     */
+    public static Item findItem(String goodsName) {
+    	int index = list.indexOf(new Item("", goodsName, 0, 0, 0));
+    	return list.get(index);
+    }
 
-	/**
-	 * 指定した従業員情報を反映
-	 *
-	 * @param emp 従業員情報
-	 */
-	public static void updateEmployee(Employee emp) {
-		int index = list.indexOf(emp);
-		list.set(index, emp);
-	}
-
-	public static List<Employee> getEmployeeList() {
-		return list;
-	}
+    /**
+     * 商品の名前のリストを返す。
+     * @return 名前の配列
+     */
+    public static String[] makeNameList() {
+        String[] nameList = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            nameList[i] = (list.get(i)).getName();
+        }
+        return nameList;
+    }
 
 	/**
-	 * 新たに従業員情報を追加
-	 *
-	 * @param emp 従業員情報
-	 * @return boolean
+	 * プルダウンリストの初期値セットデータを取得する
+     * @return 先頭の商品の名前
 	 */
-	public static boolean addEmployee(Employee emp) {
-		boolean exists = list.contains(emp);
-		if(exists) {
-			return false;
-		} else {
-			list.add(emp);
-			return true;
-		}
+	public static String getFirstItemName() {
+		return  list.get(0).getName();
 	}
+
 }
-
-
+//Copyright 2016-2021 FUJITSU APPLICATIONS LIMITED

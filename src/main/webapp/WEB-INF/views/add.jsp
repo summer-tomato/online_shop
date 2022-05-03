@@ -12,7 +12,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/sales/resources/css/common.css" />
-	<title>売上システム（初期画面）</title>
+	<title>売上システム（明細追加画面）</title>
 </head>
 <body>
 
@@ -39,6 +39,27 @@
 			</div>
 			<div class="errorMessage">
 				<c:out value="${errorMessage}" />
+			</div>
+			<div>
+				<span class="tableName">売上明細</span>
+				<table>
+					<tr><th>削除</th><th>商品ID</th><th>商品名</th><th>単価</th><th>点数</th><th>小計</th></tr>
+					<c:forEach var="obj" items="${salesForm.allList}" varStatus="loop">
+						<tr>
+							<td><form:radiobutton path="delNumber" value="${loop.count}"/></td>
+							<td>${obj.id}</td>
+							<td>${obj.name}</td>
+							<td>${obj.price}</td>
+							<td>${obj.quantity}</td>
+							<td>${obj.subtotal}</td>
+						</tr>
+					</c:forEach>
+				</table>
+				合計：${total}円
+			</div>
+			<div>
+				<input type="submit" name="remove" value="削除" />
+				<input type="submit" name="firm" value="確定" />
 			</div>
 		</div>
 	</form:form>
